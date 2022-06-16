@@ -4,7 +4,8 @@
   "description": "API Rest para backend ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,8 @@
   "dependencies": {
     "express": "^4.18.1",
     "mongoose": "^6.3.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }
