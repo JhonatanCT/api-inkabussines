@@ -10,6 +10,26 @@ const mascotas = require("./routes/mascotas");
 const usuarios = require("./routes/usuarios");
 const reclamos = require("./routes/reclamos");
 require("dotenv").config();
+const path = require("path");
+
+//Uso de swagger
+const swaggerUI = require("swagger-ui-express");
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerSpecs = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Documentación API Inkabussines",
+      version: "1.0.0"
+    },
+    servers: [
+      {
+        url: "http://localhost:5000"
+      }
+    ]
+  },
+  apis: [ ` ${path.join(__dirname, "./routes/*.js")} ` ]
+}
 
 //Inicializando variables
 const app = express();
@@ -25,6 +45,7 @@ app.use("/api", limpiezas);
 app.use("/api", mascotas);
 app.use("/api", usuarios);
 app.use("/api", reclamos);
+app.use("/api-doc-inkabussines", swaggerUI.serve, swaggerUI.setup(swaggerJSDoc(swaggerSpecs)));
 
 //Rutas
 app.get('/', (req, res) => {

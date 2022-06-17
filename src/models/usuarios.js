@@ -15,7 +15,7 @@ const usuarioModel = mongoose.Schema({
         required: true,
     },
     edad: {
-        type: String,
+        type: Number,
         required: true
     },
     password: {
